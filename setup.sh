@@ -28,7 +28,7 @@ az ml workspace create --name $WORKSPACE_NAME
 az configure --defaults workspace=$WORKSPACE_NAME 
 
 # Create compute instance
-#echo "Creating a compute instance with name: " $COMPUTE_INSTANCE
+echo "Creating a compute instance with name: " $COMPUTE_INSTANCE
 #az ml compute create --name ${COMPUTE_INSTANCE} --size STANDARD_DS11_V2 --type ComputeInstance 
 az ml compute create --name ${COMPUTE_INSTANCE} --size Standard_D2as_v4 --type ComputeInstance 
 
