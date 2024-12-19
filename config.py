@@ -1,25 +1,18 @@
+#pip install azure-ai-ml
+#pip install azure-ai-identities
 from azure.ai.ml import MLClient
 from azure.identity import DefaultAzureCredential
 
-# Initialize MLClient
 credential = DefaultAzureCredential()
-ml_client = MLClient.from_config(credential=credential)
+subscription_id= "your subscription",
+resource_group= "gv-dp100-l744c846c2ac2425e86",
+workspace_name= "mlw-dp100-l744c846c2ac2425e86"
 
-
-from azure.ai.ml import MLClient
-from azure.identity import DefaultAzureCredential
-
-# authenticate
-credential = DefaultAzureCredential()
-
-SUBSCRIPTION="your subscription id"
-RESOURCE_GROUP="gv-dp100-l9d092690c5d049baa1"
-WS_NAME="mlw-dp100-l9d092690c5d049baa1"
-# Get a handle to the workspace
 ml_client = MLClient(
     credential=credential,
-    subscription_id=SUBSCRIPTION,
-    resource_group_name=RESOURCE_GROUP,
-    workspace_name=WS_NAME,
+    subscription_id=subscription_id,
+    resource_group=resource_group,
+    workspace_name=workspace_name
 )
-ml_client = MLClient.from_config(credential=credential)
+
+print("MLClient initialized successfully in config.py")
