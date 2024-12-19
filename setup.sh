@@ -30,14 +30,14 @@ az configure --defaults workspace=$WORKSPACE_NAME
 # Create compute instance
 echo "Creating a compute instance with name: " $COMPUTE_INSTANCE
 #az ml compute create --name ${COMPUTE_INSTANCE} --size STANDARD_DS11_V2 --type ComputeInstance 
-az ml compute create --name ${COMPUTE_INSTANCE} --size Standard_D2as_v4 --type ComputeInstance 
+az ml compute create --name ${COMPUTE_INSTANCE} --size Standard_DS1_v2 --type ComputeInstance 
 
 # Create compute cluster
 #echo "Creating a compute cluster with name: " $COMPUTE_CLUSTER
 #az ml compute create --name ${COMPUTE_CLUSTER} --size STANDARD_DS11_V2 --max-instances 2 --type AmlCompute 
 
-"""
-Standard_D2as_v4 2 cores, 8GB RAM, 16GB storage  General purpose   10 cores          $0.11/hr
-Standard_DS1_v2  1 cores, 3.5GB RAM, 7GB storage  General purpose  5 cores        $0.07/hr
-Standard_D2_v3     2 cores, 8GB RAM, 50GB storage General purpose 6 cores  $0.12/hr
-Standard_D2s_v3  2 cores, 8GB RAM, 16GB storage General purpose 6 cores $0.12/hr
+
+#Standard_D2as_v4 2 cores, 8GB RAM, 16GB storage  General purpose   10 cores          $0.11/hr
+#Standard_DS1_v2  1 cores, 3.5GB RAM, 7GB storage  General purpose  5 cores        $0.07/hr
+#Standard_D2_v3     2 cores, 8GB RAM, 50GB storage General purpose 6 cores  $0.12/hr
+#Standard_D2s_v3  2 cores, 8GB RAM, 16GB storage General purpose 6 cores $0.12/hr
