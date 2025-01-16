@@ -37,8 +37,16 @@ jobs:
       python src/train_model.py
     displayName: 'Train Model'
 
+  - script: | 
+    python src/deploy_model_aci.py
+    displayName: 'Deploy Model to ACI' 
+    
   - script: |
-      python src/register_model.py
+  python src/deploy_model_aks.py 
+  displayName: 'Deploy Model to AKS'
+
+  - script: |
+    python src/register_model.py
     displayName: 'Register Model'
   
   - task: PublishBuildArtifacts@1
