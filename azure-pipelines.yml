@@ -1,19 +1,47 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - main
 
 pool:
-  vmImage: ubuntu-latest
+  vmImage: 'ubuntu-latest'
 
-steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+jobs:
+- job: Build
+  displayName: 'Build job'
+  steps:
+  - task: UsePythonVersion@0
+    inputs:
+      versionSpec: '3.x'
+      addToPath: true
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+  - script: |
+      pip install -r requirements.txt
+    displayName: 'Install dependencies'
+
+  - script: |
+      python src/data_ingestion.py
+    displayName: 'Run Data Ingestion'
+
+  - script: |
+      python src/data_preprocessing.py
+    displayName: 'Run Data Preprocessing'
+
+  - script: |
+      python src/feature_engineering.py
+    displayName: 'Run Feature Engineering'
+
+  - script: |
+      python src/feature_selection.py
+    displayName: 'Run Feature Selection'
+
+  - script: |
+      python src/train_model.py
+    displayName: 'Train Model'
+
+  - script: |
+      python src/register_model.py
+    displayName: 'Register Model'
+  
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathToPublish: '$(System.DefaultWorkingDirectory)'
+      artifactName: 'models'
